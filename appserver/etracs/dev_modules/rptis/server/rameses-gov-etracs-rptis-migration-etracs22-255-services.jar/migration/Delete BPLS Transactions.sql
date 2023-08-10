@@ -1,0 +1,37 @@
+set foreign_key_checks=0;
+
+delete from business; 
+delete from business_active_info; 
+delete from business_active_lob; 
+delete from business_active_lob_history; 
+delete from business_active_lob_history_forprocess; 
+delete from business_address; 
+delete from business_application; 
+delete from business_application_info; 
+delete from business_application_lob; 
+delete from business_application_task; 
+delete from business_application_task_lock; 
+delete from business_application_workitem; 
+delete from business_billing; 
+delete from business_billing_item; 
+delete from business_billitem_txntype; 
+delete from business_change_log; 
+delete from business_closure; 
+delete from business_compromise; 
+delete from business_payment; 
+delete from business_payment_item; 
+delete from business_permit; 
+delete from business_permit_lob; 
+delete from business_receivable; 
+delete from business_receivable_detail; 
+delete from business_recurringfee; 
+delete from business_redflag; 
+delete from business_requirement; 
+delete from business_sms; 
+delete from business_taxcredit; 
+delete from business_taxcredit_item; 
+delete from business_taxincentive; 
+delete from lob;
+delete from lobclassification;
+
+set foreign_key_checks=1;

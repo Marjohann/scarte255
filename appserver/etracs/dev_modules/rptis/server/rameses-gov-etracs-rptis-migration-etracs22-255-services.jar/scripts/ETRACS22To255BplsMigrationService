@@ -1,0 +1,16 @@
+import com.rameses.annotations.*;
+import com.rameses.common.*;
+import java.rmi.server.UID;
+import com.rameses.util.*;
+import com.rameses.services.extended.*;
+
+class ETRACS22To255BplsMigrationService 
+{
+	@ActiveDB(value='etracs22bpls', em='etracs22')
+	def em22;
+
+	@DataContext('lobclassification')
+	def em_classification;
+
+
+}

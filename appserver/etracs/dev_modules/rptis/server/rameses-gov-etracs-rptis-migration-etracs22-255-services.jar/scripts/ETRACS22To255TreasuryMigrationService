@@ -1,0 +1,35 @@
+import com.rameses.annotations.*;
+import com.rameses.common.*;
+import java.rmi.server.UID;
+import com.rameses.util.*;
+import com.rameses.services.extended.*;
+
+class ETRACS22To255TreasuryMigrationService 
+{
+	@ActiveDB(value='etracs22tc', em='etracs22')
+	def em22;
+
+	@DataContext('fund')
+	def em_fund;
+
+	@DataContext('itemaccount')
+	def em_itemaccount;
+
+
+	@ProxyMethod 
+	public void migrateFunds() {
+		em22.getFunds().each{fund ->
+			em_fund.save(fund);
+		}
+	}
+
+	@ProxyMethod 
+	public void migrateItemAccounts() {
+		em22.getItemAccounts().each{item ->
+			if (!item.code) item.code = '-';
+			item.tags = []
+			em_itemaccount.save(item);
+		}
+	}
+	
+}

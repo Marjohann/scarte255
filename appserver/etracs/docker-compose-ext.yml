@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+   etracs-server:
+      volumes:
+         ## this is only a seed mapping, please do not remove
+         ##
+         - ../../_custom/.emptydir:/.emptydir
+
+
+         ## mounted patches
+         ##
+         - ./dev_modules/entity:/services/modules/entity
+         - ./dev_modules/etracs:/services/modules/etracs
+         - ./dev_modules/bpls:/services/modules/bpls
+
+         - ./dev_modules/treasury:/services/modules/treasury
+
+         
+         ## mounted rptis-2.5.05.01 services
+         ##
+         - ./dev_modules/rptis/server:/services/modules/rptis

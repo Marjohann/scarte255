@@ -1,0 +1,25 @@
+import com.rameses.annotations.*;
+import com.rameses.common.*;
+import java.rmi.server.UID;
+import com.rameses.util.*;
+import com.rameses.services.extended.*;
+
+class ETRACS22To255AdminMigrationService 
+{
+	@ActiveDB(value='etracs22admin', em='etracs22')
+	def em22;
+
+	@DataContext('sys_user')
+	def em_user;
+
+	@ProxyMethod 
+	public void migrateUsers() {
+		em22.getUsers().each{user ->
+			user.name = user.lastname + ', ' + user.firstname + (user.middlename ? ' ' + user.middlename : '');
+			user.jobtitle = null;
+			user.txncode = user.firstname[0] + (user.middlename ? user.middlename[0] : '') + user.lastname[0];
+			em_user.save(user);
+		}
+	}
+	
+}
